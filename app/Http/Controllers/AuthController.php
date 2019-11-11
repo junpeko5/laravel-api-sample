@@ -6,6 +6,7 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\User;
 use App\Http\Resources\User as UserResource;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -43,5 +44,10 @@ class AuthController extends Controller
                 'token' => $token,
             ]
         ]);
+    }
+
+    public function user(Request $request)
+    {
+        return new UserResource(($request->user()));
     }
 }

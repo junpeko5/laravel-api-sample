@@ -48,6 +48,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->id === $post->user->id;
     }
 
+    public function hasLikedPost(Post $post)
+    {
+        return $post->likes->where('user_id', $this->id)->count() === 1;
+    }
+
     public function getJWTIdentifier()
     {
         // return the primary key of the user - user id

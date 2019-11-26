@@ -20,6 +20,7 @@ use Carbon\Carbon;
 
 $factory->define(User::class, function (Faker $faker) {
     $now = Carbon::now();
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
